@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css?family=Quicksand&display=swap");
+* {
+  font-family: "Quicksand", sans-serif;
+}
+
+body {
+  color: rgb(49, 48, 48);
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex-grow: 1;
+  /* this allows a given element to take as much space as it needs, 1 tells it to take all leftover page  */
+}
+
+footer {
+  color: grey;
+  border-top: 1px solid rgb(214, 214, 214);
+  margin-top: 20px;
+  padding: 20px 0;
+}
+
+header {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  font: 64px;
+}
+
+header a {
+  color: #888888;
+  margin-right: 18px;
+  text-decoration: none;
+}
+
+input {
+  border: 1px solid rgb(233, 233, 233);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+input:focus {
+  outline-color: rgb(221, 224, 235);
+}
+
+button {
+  cursor: pointer;
+  border: 1px solid rgb(233, 233, 233);
+  background: rgb(196, 196, 196);
+  color: white;
+  padding: 5px;
+  border-radius: 10px;
+}
