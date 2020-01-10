@@ -114,6 +114,89 @@ MongoClient.connect(
     //     console.log(users);
     //   });
 
+    // --------------- UPDATE ---------------- //
+    // --------------------------------------- //
 
+    // const updatePromise = db.collection("users").updateOne(
+    //   {
+    //     // the first object is where we provide the search criteria, in this case the id
+    //     _id: new ObjectID("5e16f328fb1b9a16746abb54")
+    //   },
+    //   {
+    //     // this is the actual update we want to apply
+    //     // we use update operators to define the change
+    //     // the most common one is $set
+
+    //     $set: {
+    //       name: "Mike"
+    //       // here it is only impacting the field we are mentioning
+    //     }
+    //   }
+    // );
+
+    // updatePromise
+    //   .then(result => {
+    //     console.log(result);
+    //   })
+    //   .catch(error => {
+    //     console.log(error);
+    //   });
+
+    // ------- UDPATE ONE ----------- //
+    // ------------------------------ //
+
+    // db.collection("users")
+    //   .updateOne(
+    //     {
+    //       _id: new ObjectID("5e16f328fb1b9a16746abb54")
+    //     },
+    //     {
+    //       //increment age by 1 - to decrement use negative numbers
+    //       $inc: {
+    //         age: 1
+    //       }
+    //     }
+    //   )
+    //   .then(result => {
+    //     console.log(result);
+    //   })
+    //   .catch(error => {
+    //     console.log(error);
+    //   });
+
+    // ------- UDPATE MANY -------- //
+
+    // db.collection("tasks")
+    //   .updateMany(
+    //     {
+    //       completed: false
+    //     },
+    //     {
+    //       $set: {
+    //         completed: true
+    //       }
+    //     }
+    //   )
+    //   .then(result => {
+    //     console.log(result.modifiedCount);
+    //   })
+    //   .catch(error => {
+    //     console.log(error);
+    //   });
+
+    // ------------------- DELETE  ---------------------//
+    // -------------------------------------------------//
+
+    db.collection("users")
+      .deleteMany({
+        // delete where age is 28
+        name: "Mike"
+      })
+      .then(result => {
+        console.log(result);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 );
