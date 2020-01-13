@@ -85,18 +85,18 @@ MongoClient.connect(
 
     // ------------ READ -------------------------//
     //--------------------------------------------//
-    db.collection("users").findOne(
-      {
-        name: "Dom"
-      },
-      (error, user) => {
-        if (error) {
-          return console.log("Unable to fetch");
-        }
+    // db.collection("users").findOne(
+    //   {
+    //     name: "Dom"
+    //   },
+    //   (error, user) => {
+    //     if (error) {
+    //       return console.log("Unable to fetch");
+    //     }
 
-        console.log(user);
-      }
-    ); // find One will return the first one that it finds.
+    //     console.log(user);
+    //   }
+    // ); // find One will return the first one that it finds.
     // I can't search by the string ID, I need to search 'new ObjectID("string")'
 
     // ---- find ------- //
@@ -187,16 +187,28 @@ MongoClient.connect(
     // ------------------- DELETE  ---------------------//
     // -------------------------------------------------//
 
-    db.collection("users")
-      .deleteMany({
-        // delete where age is 28
-        name: "Mike"
-      })
-      .then(result => {
-        console.log(result);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    // db.collection("users")
+    //   .deleteMany({
+    //     // delete where age is 28
+    //     name: "Mike"
+    //   })
+    //   .then(result => {
+    //     console.log(result);
+    //   })
+    //   .catch(error => {
+    //     console.log(error);
+    //   });
+
+    // ---------- DELETE ONE ----------- //
+    // db.collection("tasks")
+    //   .deleteOne({
+    //     description: "clean house"
+    //   })
+    //   .then(result => {
+    //     console.log(result);
+    //   })
+    //   .catch(error => {
+    //     console.log(error);
+    //   });
   }
 );
