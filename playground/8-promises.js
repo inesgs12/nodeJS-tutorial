@@ -6,7 +6,7 @@ const doWorkPromise = new Promise((resolve, reject) => {
     // If things went well we call resolve, if not we call reject.
     // we pass to resolve and to reject a single value.
     // resolve("This is a good result");
-    reject("This is an error!");
+    // reject("This is an error!");
     resolve("This is resolve!");
   }, 2000);
 });
@@ -20,3 +20,5 @@ doWorkPromise
     console.log("Error!", error);
     // catch is triggered where the promise is rejected.
   });
+
+
