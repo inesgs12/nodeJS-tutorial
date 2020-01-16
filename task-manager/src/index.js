@@ -51,7 +51,7 @@ app.post("/users", async (req, res) => {
 // ----------- UPDATE USER ------------//
 
 app.patch("/users/:id", async (req, res) => {
-  console.log(req.body);
+  console.log(req.body); // returns empty object
   const updates = Object.keys(req.body);
   const allowedUpdates = ["name", "email", "password", "age"];
   const isValidOperation = updates.every(update =>
@@ -63,7 +63,7 @@ app.patch("/users/:id", async (req, res) => {
   }
 
   try {
-    const user = await User.findByIdAndUpdate(req.params._id, req.body, {
+    const user = await User.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
       runValidators: true
     }); // new: true will return the updated user, not the initial one that was found.
@@ -139,6 +139,7 @@ app.patch("/tasks/:id", async (req, res) => {
       res.status(404).send();
     } else {
       res.status(200).send(task);
+      console.log(task); // returns initial task
     }
   } catch (e) {
     console.log(e);
