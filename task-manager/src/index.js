@@ -51,6 +51,7 @@ app.post("/users", async (req, res) => {
 // ----------- UPDATE USER ------------//
 
 app.patch("/users/:id", async (req, res) => {
+  console.log(req.body);
   const updates = Object.keys(req.body);
   const allowedUpdates = ["name", "email", "password", "age"];
   const isValidOperation = updates.every(update =>
@@ -62,7 +63,7 @@ app.patch("/users/:id", async (req, res) => {
   }
 
   try {
-    const user = await User.findByIdAndUpdate(req.params.id, req.body, {
+    const user = await User.findByIdAndUpdate(req.params._id, req.body, {
       new: true,
       runValidators: true
     }); // new: true will return the updated user, not the initial one that was found.
@@ -78,8 +79,8 @@ app.patch("/users/:id", async (req, res) => {
 // ----------- GET ALL TASKS ------------//
 app.get("/tasks", async (req, res) => {
   try {
-    const users = await User.find({});
-    res.send(users);
+    const tasks = await Task.find({});
+    res.send(tasks);
   } catch (e) {
     res.status(500).send(e);
   }
@@ -110,6 +111,37 @@ app.post("/tasks", async (req, res) => {
     res.status(201).send(task);
   } catch (e) {
     res.status(400).send(e);
+  }
+});
+
+// ----------- UPDATE TASK ------------//
+
+app.patch("/tasks/:id", async (req, res) => {
+  console.log(req.body);
+  const updates = Object.keys(req.body);
+  const allowedUpdates = ["description", "completed"];
+  const isValidOperation = updates.every(update =>
+    allowedUpdates.includes(update)
+  );
+
+  if (!isValidOperation) {
+    return res.status(400).send({
+      error: "invalid updates!"
+    });
+  }
+
+  try {
+    const task = await Task.findByIdAndUpdate(req.params.id, req.params.body, {
+      new: true,
+      runValidators: true
+    });
+    if (!task) {
+      res.status(404).send();
+    } else {
+      res.status(200).send(task);
+    }
+  } catch (e) {
+    console.log(e);
   }
 });
 
