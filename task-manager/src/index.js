@@ -65,12 +65,16 @@ app.patch("/users/:id", async (req, res) => {
   try {
     const user = await User.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
-      runValidators: true
-    }); // new: true will return the updated user, not the initial one that was found.
+      runValidators: true,
+      useFindAndModify: false
+    });
+    // console.log("Id: " + req.params.id, " body: " + req.body);
+    // console.log("User: " + user);
     if (!user) {
       return res.status(400).send();
+    } else {
+      res.status(200).send(user);
     }
-    res.send(user);
   } catch (e) {
     res.status(400).send(e);
   }
@@ -125,21 +129,21 @@ app.patch("/tasks/:id", async (req, res) => {
   );
 
   if (!isValidOperation) {
-    return res.status(400).send({
-      error: "invalid updates!"
-    });
+    return res.status(400).send({ error: "invalid updates!" });
   }
 
   try {
-    const task = await Task.findByIdAndUpdate(req.params.id, req.params.body, {
+    const task = await Task.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
-      runValidators: true
+      runValidators: true,
+      useFindAndModify: false
     });
+    // console.log("Id: " + req.params.id, " body: " + req.body);
+    // console.log("Task: " + task);
     if (!task) {
-      res.status(404).send();
+      return res.status(404).send();
     } else {
       res.status(200).send(task);
-      console.log(task); // returns initial task
     }
   } catch (e) {
     console.log(e);
