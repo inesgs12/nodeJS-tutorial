@@ -5,8 +5,12 @@ const router = new express.Router();
 // ----------- GET ALL TASKS ------------//
 router.get("/tasks", async (req, res) => {
   try {
-    const tasks = await Task.find({});
-    res.send(tasks);
+    const allTasks = await Task.find({});
+    // res.send(tasks);
+    res.render("tasks", {
+      title: "Tasks",
+      tasks: allTasks
+    });
   } catch (e) {
     res.status(500).send(e);
   }

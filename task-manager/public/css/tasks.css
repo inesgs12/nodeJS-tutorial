@@ -1,0 +1,35 @@
+/*  ----------- VIEW ALL POSTS ------------ */
+
+.tasks-grid {
+  display: grid;
+  grid-template-columns: 40%;
+  grid-gap: 20px;
+  align-items: center;
+  margin: auto;
+  justify-content: center;
+}
+
+.card {
+  padding: 10px;
+  overflow: hidden;
+  box-shadow: 2px 2px 6px 0px rgb(209, 209, 209);
+  background: white;
+  border-radius: 5px;
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
+.card h2 {
+  color: rgb(26, 61, 55);
+  text-align: center;
+  max-height: 80%;
+}
+
+/* -------------Header ------------------ */
+header {
+  text-align: center;
+  padding: 20px;
+  color: rgb(21, 32, 65);
+}

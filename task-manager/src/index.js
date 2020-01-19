@@ -27,6 +27,13 @@ hbs.registerPartials(partialsPath);
 // app.use is a way to customize the server
 app.use(express.static(publicDirectoryPath));
 
+app.get("/", (req, res) => {
+  res.render("index", {
+    title: "Task Manager",
+    name: "Ines Guerrero"
+  });
+});
+
 app.listen(port, () => {
   console.log("Server is up on port");
 });
