@@ -64,8 +64,6 @@ router.patch("/tasks/:id", async (req, res) => {
       runValidators: true,
       useFindAndModify: false
     });
-    // console.log("Id: " + req.params.id, " body: " + req.body);
-    // console.log("Task: " + task);
     if (!task) {
       return res.status(400).send();
     } else {
