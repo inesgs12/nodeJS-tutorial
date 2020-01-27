@@ -6,7 +6,7 @@ const router = new express.Router();
 router.get("/tasks", async (req, res) => {
   try {
     const allTasks = await Task.find({});
-    // res.send(tasks);
+    // res.send(allTasks);
     res.render("tasks", {
       title: "Tasks",
       tasks: allTasks
@@ -59,11 +59,16 @@ router.patch("/tasks/:id", async (req, res) => {
   }
 
   try {
-    const task = await Task.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-      runValidators: true,
-      useFindAndModify: false
-    });
+    const task = await Task.findById(req.params.id);
+
+    updates.forEach(update => (user[update] = req.body[update]));
+
+    await user.save();
+    // const task = await Task.findByIdAndUpdate(req.params.id, req.body, {
+    //   new: true,
+    //   runValidators: true,
+    //   useFindAndModify: false
+    // });
     if (!task) {
       return res.status(400).send();
     } else {
